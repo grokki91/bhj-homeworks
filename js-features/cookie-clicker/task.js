@@ -6,16 +6,8 @@ let dateEnd = 0;
 
 
 cookie.onclick = function() {
-    count.textContent++;
-    if (count.textContent % 2 !== 0) {
-        cookie.width = 220;
-        dateStart = Date.now();
-        console.log(dateStart);
-    } else {
-        cookie.width = 200;
-        dateEnd = Date.now();
-        console.log(dateEnd);
-    }
+    cookie.width = ++count.textContent % 2 ? 250 : 200;
+    count.textContent % 2 !== 0 ? dateStart = Date.now() : dateEnd = Date.now();
     if (dateEnd !== 0) {
         speed.textContent = Math.abs((1 / (dateStart - dateEnd)) * 1000).toFixed(2);    
     }
