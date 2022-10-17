@@ -1,14 +1,17 @@
-let menuLink = document.querySelectorAll('.menu__link');
-let menuItem = document.querySelectorAll('.menu__item');
-let menuSub = document.querySelectorAll('.menu_sub');
+const menuItem = document.querySelectorAll('.menu__item');
 
 menuItem.forEach(el => {
-    el.onclick = function() {
-        for (elem of el.children) {
-            if (elem.classList.contains('menu_sub')) {
-                elem.classList.toggle('menu_active');
-                return false;
-            }
+    el.onclick = function(event) {
+        if (el.childNodes.length > 3) {
+            event.preventDefault();
+        }
+
+        el.closest('.menu').querySelectorAll('.menu_sub').forEach(elem => {
+            elem.classList.remove('menu_active');
+        })
+
+        if (event.target.closest('li').querySelector('.menu_sub') !== null) {
+            event.target.closest('li').querySelector('.menu_sub').classList.add('menu_active');
         }
     }
 })
