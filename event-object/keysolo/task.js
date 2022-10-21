@@ -17,12 +17,39 @@ class Game {
   }
 
   registerEvents() {
-    let symbol = this.currentSymbol.textContent;
+    let word = document.querySelector('.word').textContent;
+    let loss = document.querySelector('.status__loss').textContent;
+    let win = document.querySelector('.status__wins').textContent;
+    let timer = document.querySelector('.timer').textContent;
+
+    let time = word.length;
+    timer = time;
+    let timeId = setInterval(() => {
+      timer = document.querySelector('.timer').textContent = time;
+      timer = time;
+      time--;
+
+      if (time < 1) {
+        this.fail();
+        word = document.querySelector('.word').textContent;
+        timer = document.querySelector('.timer').textContent = time;
+        time = word.length;
+      }
+
+      if (loss > 3 || win > 9) {
+        clearInterval(timeId);
+      }
+    }, 1000)
+
+    
     document.addEventListener('keyup', e => {
-      if (e.key === symbol) {
+      let symbol = this.currentSymbol.textContent;
+      let {key} = e;
+      if (key.toLowerCase() === symbol) {
         return this.success();
       } 
-
+      
+      this.fail();
     })
   }
 
