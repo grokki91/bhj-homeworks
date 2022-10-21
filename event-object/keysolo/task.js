@@ -17,13 +17,13 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    let symbol = this.currentSymbol.textContent;
+    document.addEventListener('keyup', e => {
+      if (e.key === symbol) {
+        return this.success();
+      } 
+
+    })
   }
 
   success() {
