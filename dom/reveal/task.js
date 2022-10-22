@@ -1,4 +1,4 @@
-let reveals = [...document.querySelectorAll('.reveal')];
+const reveals = [...document.querySelectorAll('.reveal')];
 
 document.addEventListener('scroll', e => {
     let viewportHeight = window.innerHeight;
