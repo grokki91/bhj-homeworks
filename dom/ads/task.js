@@ -1,5 +1,5 @@
-let rotatorLength = document.querySelectorAll('.rotator__case').length;
-let rotators = document.querySelectorAll('.rotator');
+const rotatorLength = document.querySelectorAll('.rotator__case').length;
+const rotators = document.querySelectorAll('.rotator');
 let count = 0;
 let speed = 1000;
 
