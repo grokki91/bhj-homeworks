@@ -1,7 +1,7 @@
 const textFontBtn = [...document.querySelector('.book__control').children];
 const content = document.querySelector('.book__content');
 const textColorBtn = [...document.querySelector('.book__control_color').querySelectorAll('.color')];
-const bgColorBtn = [...document.querySelector('.book__control_background').querySelectorAll('.color')];
+const bgColorBtn = [...document.querySelectorAll('.book__control_background > a')];
 let fontClass;
 let textColorClass;
 let bgColorClass;
