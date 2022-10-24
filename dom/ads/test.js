@@ -20,7 +20,7 @@ setInterval(() => {
 
             if (count === index) {
                 el.classList.add('rotator__case_active');
-                let { color } = el.dataset;
+                let {color} = el.dataset;
                 speed = el.dataset.speed;
                 el.style.color = color;
             }
