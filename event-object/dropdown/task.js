@@ -19,6 +19,7 @@ lists.forEach(list => {
         [...currentEvent].forEach(el => {
             if (el.className === 'dropdown__value') {
                 el.textContent = event.target.textContent;
+                el.closest('.dropdown').querySelector('.dropdown__list').classList.remove('dropdown__list_active');
             }
         })
     })
