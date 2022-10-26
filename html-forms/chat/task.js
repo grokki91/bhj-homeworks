@@ -32,7 +32,7 @@ document.addEventListener('keyup', e => {
             <div class='message__time'>${time}</div>
             <div class='message__text'>${randomAnswer()}</div>
         </div>`;
-
+        text.value = '';
         chat.lastChild.scrollIntoView();
     }
 })
