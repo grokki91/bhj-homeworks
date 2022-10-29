@@ -17,41 +17,38 @@ class Game {
   }
 
   registerEvents() {
-    // Отрисовываю элементы сразу
     let word = document.querySelector('.word').textContent;
     let loss = document.querySelector('.status__loss').textContent;
     let win = document.querySelector('.status__wins').textContent;
+    let timer = document.querySelector('.timer').textContent;
+
     let time = word.length;
-    document.querySelector('.timer').textContent = time;
-
-    // Функция рендера элементов
-    function renderElements() {
-      word = document.querySelector('.word').textContent;
-      document.querySelector('.timer').textContent = time;
-    }
-
+    timer = time;
     let timeId = setInterval(() => {
-      let currentWord = word; // Сохраняю слово, чтобы потом его сравнить с новым
-      time--;
-      renderElements();
+      // обновляю переменные
+      word = document.querySelector('.word').textContent;
+      loss = document.querySelector('.status__loss').textContent;
+      win = document.querySelector('.status__wins').textContent;
+      timer = document.querySelector('.timer').textContent = time;
+
+      timer = time;
+
+      if (time < 1) {
+        this.fail();
+        word = document.querySelector('.word').textContent;
+        timer = document.querySelector('.timer').textContent;
+        time = word.length;
+      }
 
       if (loss > 3 || win > 9) {
         clearInterval(timeId);
-      }  
-
-      if (time === 0) {
-        this.fail();
-        time = word.length;
-        renderElements();
       }
-
-      if (currentWord !== word) {
-        time = word.length;
-        renderElements();
-      }
+      time--;
+      console.log(`Слово - ${word}, правильно - ${win}, неправильно - ${loss}, секунд - ${time}`);
 
     }, 1000)
 
+    
     document.addEventListener('keyup', e => {
       let symbol = this.currentSymbol.textContent;
       let {key} = e;
@@ -124,3 +121,4 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
+
