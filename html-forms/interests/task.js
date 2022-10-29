@@ -9,6 +9,5 @@ interest.forEach(elem => {
         if (elem.closest('.interest').children.length > 1 && elem.checked === false) {
             elem.closest('.interest').querySelectorAll('.interest__check').forEach(el => el.checked = false); 
         }
-
     })
 })
