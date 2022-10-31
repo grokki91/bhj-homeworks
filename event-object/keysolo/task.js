@@ -49,17 +49,17 @@ class Game {
         time = word.length;
         renderElements();
       }
+    }, 30000)
 
-    }, 1000)
-
-    document.addEventListener('keyup', e => {
+    document.addEventListener('keypress', e => {
       let symbol = this.currentSymbol.textContent;
-      let {key} = e;
-      if (key.toLowerCase() === symbol) {
-        return this.success();
-      } 
-      
-      this.fail();
+      let { key } = e;
+
+      if (key.toLowerCase().charCodeAt(0) === symbol.charCodeAt(0)) {
+          return this.success();
+      } else {
+        this.fail();
+      }
     })
   }
 
@@ -103,7 +103,11 @@ class Game {
         'popcorn',
         'cinema',
         'love',
-        'javascript'
+        'javascript',
+        'привет',
+        'рок',
+        'я люблю kitkat',
+        'интересные stories'
       ],
       index = Math.floor(Math.random() * words.length);
 

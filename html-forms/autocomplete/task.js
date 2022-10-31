@@ -76,7 +76,7 @@ class Autocomplete {
 
       if (el.text.includes(text)) {
         list.classList.add('autocomplete__list_active');
-        console.log(el);
+
         textValue = el.text;
         id = el.value;
       }
