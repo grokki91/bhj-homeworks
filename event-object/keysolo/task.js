@@ -49,7 +49,7 @@ class Game {
         time = word.length;
         renderElements();
       }
-    }, 30000)
+    }, 1000)
 
     document.addEventListener('keypress', e => {
       let symbol = this.currentSymbol.textContent;
