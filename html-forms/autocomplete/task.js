@@ -68,17 +68,20 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    let list = document.querySelector('.autocomplete__list')
-    let textValue;
-    let id;
+    let list = document.querySelector('.autocomplete__list');
+    let arrList = [];
+    let objList = {};
 
     Array.from(this.input.options).forEach(el => {
 
       if (el.text.includes(text)) {
         list.classList.add('autocomplete__list_active');
+        objList = {
+          text : el.text,
+          value : el.value
+        }
 
-        textValue = el.text;
-        id = el.value;
+        arrList.push(objList);
       }
 
       if (this.searchInput.value === '' || list.innerText === 'undefined') {
@@ -86,12 +89,7 @@ class Autocomplete {
       }
     })
 
-    return [
-      {
-        text: textValue,
-        value: id
-      }
-    ];
+    return arrList;
   }
 }
 
