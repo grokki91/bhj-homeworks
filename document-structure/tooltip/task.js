@@ -1,5 +1,4 @@
 let links = [...document.querySelectorAll('.has-tooltip')];
-let tooltips = document.querySelectorAll('.tooltip');
 let tooltip = document.querySelector('.tooltip');
 
 links.forEach(link => {
@@ -7,7 +6,6 @@ links.forEach(link => {
         e.preventDefault();
         let { top, left } = link.getBoundingClientRect();
         let title = link.getAttribute('title');
-        tooltips.forEach(el => el.classList.remove('tooltip_active'))
         tooltip.classList.toggle('tooltip_active');
         tooltip.textContent = title;
         tooltip.style.top = top + 20 + 'px';
