@@ -1,9 +1,7 @@
 let input = document.getElementById('task__input');
 let taskList = document.getElementById('tasks__list');
-let btn = document.getElementById('tasks__add');
 
 input.addEventListener('keypress', event => {
-    event.preventDefault();
     const { key } = event;
 
     if (key === 'Enter' && input.value !== '') {
