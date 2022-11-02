@@ -1,10 +1,9 @@
-let input = document.getElementById('task__input');
-let taskList = document.getElementById('tasks__list');
-let btn = document.getElementById('tasks__add');
 
-input.addEventListener('keypress', event => {
-    event.preventDefault();
-    const { key } = event;
+
+document.addEventListener('keypress', e => {
+    const { key } = e;
+    let input = document.getElementById('task__input');
+let taskList = document.getElementById('tasks__list');
 
     if (key === 'Enter' && input.value !== '') {
         console.log('dfdsf');
