@@ -3,6 +3,8 @@ let taskList = document.getElementById('tasks__list');
 let arrList = [];
 
 input.addEventListener('keypress', event => {
+    event.preventDefault();
+    
     const { key } = event;
 
     if (key === 'Enter' && input.value !== '') {

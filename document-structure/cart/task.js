@@ -25,12 +25,20 @@ buyBtn.forEach(el => {
         let value = el.closest('.product').querySelector('.product__quantity-value');
         
         title.textContent = `Корзина`;
-        cart.innerHTML += `
-        <div class="cart__product" data-id="${id}">
-            <img class="cart__product-image" src="${src}">
-            <div class="cart__product-close">X</div>
-            <div class="cart__product-count">${value.textContent}</div>
-        </div>`;
+        
+        // добавлять товары без дублирования и суммировать их количество
+        let cartId = [...document.querySelectorAll('.cart__product')].find(el => el.dataset.id === id);
+        if (cartId && cartId.dataset.id === id) {
+            let cartValue = cartId.querySelector('.cart__product-count');
+            cartValue.textContent = parseInt(cartValue.textContent) + parseInt(value.textContent);
+        } else {
+            cart.innerHTML += `
+            <div class="cart__product" data-id="${id}">
+                <img class="cart__product-image" src="${src}">
+                <div class="cart__product-close">X</div>
+                <div class="cart__product-count">${value.textContent}</div>
+            </div>`;
+        }
 
         // задание с анимацией
         animationImg(el, id);
