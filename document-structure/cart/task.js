@@ -56,7 +56,7 @@ buyBtn.forEach(el => {
 
 
 function animationImg(el, id) {
-    let step = 5;
+    let step = 50;
     let cloneImg = el.closest('.product').querySelector('img').cloneNode();
     cloneImg.style.position = 'absolute';
     let imgProductX = el.closest('.product').querySelector('img').getBoundingClientRect().top;
@@ -84,6 +84,6 @@ function animationImg(el, id) {
         }
 
         step--;
-    }, 100)
+    }, 10)
 
 }
