@@ -4,17 +4,30 @@ let tooltip = document.querySelector('.tooltip');
 links.forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
-        let { top, left } = link.getBoundingClientRect();
         let title = link.getAttribute('title');
         tooltip.classList.toggle('tooltip_active');
         tooltip.textContent = title;
-        tooltip.style.top = top + 20 + 'px';
-        tooltip.style.left = left + 'px';
-        tooltip.dataset.top = 'над текстом';
-        tooltip.dataset.left = 'слева от текста';
-        tooltip.dataset.right = 'справа от текста';
-        tooltip.dataset.bottom = 'снизу от текста';
+        renderPositionTooltip(link);
     })
 
 })
 
+function renderPositionTooltip(link) {
+    let { top, left, width, height } = link.getBoundingClientRect();
+    let position = link.dataset.position;
+
+    if (position === 'top') {
+        tooltip.style.top = top - height - 10 + 'px';
+        tooltip.style.left = left + 'px';
+    } else if (position === 'left') {
+        tooltip.style.left = left - tooltip.clientWidth + 'px';
+        tooltip.style.top = top + 'px';
+    } else if (position === 'right') {
+        tooltip.style.left = left + width + 'px';
+        tooltip.style.top = top + 'px';
+    } else if (position === 'bottom') {
+        tooltip.style.top = top + height + 'px';
+        tooltip.style.left = left + 'px';
+    }
+
+}
