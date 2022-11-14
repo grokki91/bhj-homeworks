@@ -1,5 +1,5 @@
-let loader = document.getElementById('loader');
-let items = document.getElementById('items');
+const loader = document.getElementById('loader');
+const items = document.getElementById('items');
 
 if (localStorage.getItem('valute')) {
     loader.classList.remove('loader_active');
@@ -19,12 +19,12 @@ if (localStorage.getItem('valute')) {
 } 
 
 else {
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://netology-slow-rest.herokuapp.com/');
     xhr.send();
     
-    xhr.addEventListener('readystatechange', function() {
-        if (xhr.readyState === 4 ) {
+    xhr.addEventListener('progress', function() {
+        if (xhr.status === 200 ) {
             loader.classList.remove('loader_active');
             valuteList = JSON.parse(this.response).response.Valute;
         
@@ -42,8 +42,8 @@ else {
                         </div>
                     </div>`;
             }
-            let item = [...document.querySelectorAll('.item')];
-            let itemArray = item.map(el => ({
+            const item = [...document.querySelectorAll('.item')];
+            const itemArray = item.map(el => ({
                 code : el.querySelector('.item__code').innerText,
                 value : el.querySelector('.item__value').innerText,
                 currency : el.querySelector('.item__currency').innerText
