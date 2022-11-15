@@ -25,7 +25,7 @@ function vote(classList, pollObject) {
         btn.addEventListener('click', e => {
             const answer = pollObject.data.answers.findIndex(el => el === btn.innerText);
             alert('Спасибо, ваш голос засчитан!');
-            
+
             xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/poll.php');
             xhr.setRequestHeader( 'Content-type', 'application/x-www-form-urlencoded' );
             xhr.responseType = 'json';
