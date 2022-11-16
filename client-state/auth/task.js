@@ -2,8 +2,6 @@ const btn = document.querySelector('.btn');
 const form = document.getElementById('signin__form');
 const signin = document.getElementById('signin');
 const welcome = document.getElementById('welcome');
-const login = document.querySelector('[name="login"]');
-const password = document.querySelector('[name="password"]');
 
 const loginStorage = localStorage.getItem('form');
 loginStorage ? greet(loginStorage) : false;
