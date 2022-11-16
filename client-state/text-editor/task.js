@@ -1,19 +1,9 @@
 const editor = document.getElementById('editor');
 const clearBtn = document.getElementById('clear');
-let words = '';
-let savedText = localStorage.getItem('words');
+const savedText = localStorage.getItem('words');
+editor.textContent = savedText;
 
-if (savedText) {
-    editor.textContent = savedText;
-    words = savedText;
-}
-
-editor.addEventListener('keypress', e => {
-    let { key } = e;
-    words += key;
-
-    localStorage.setItem('words', words);
-})
+editor.addEventListener('keyup', () => localStorage.setItem('words', editor.value));
 
 clearBtn.addEventListener('click', () => {
     editor.value = '';
