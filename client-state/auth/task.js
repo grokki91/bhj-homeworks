@@ -13,12 +13,13 @@ btn.addEventListener('click', e => {
     const formData = new FormData(form);
     const xhr = new XMLHttpRequest;
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/auth.php');
+    xhr.responseType = 'json';
     xhr.send(formData);
     xhr.addEventListener('load', function(e) {
-        const response = JSON.parse(e.target.response);
+        const response = e.target.response;
+
         if (!response.success) {
-            login.value = '';
-            password.value = '';
+            form.reset();
             return alert('Неверный логин/пароль');
         }
 
